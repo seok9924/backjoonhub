@@ -2,9 +2,9 @@ n = int(input())
 ans = abs(100 - n)
 m = int(input())
 if m:
-    broken = set(input().split())
+    broken = input().split()
 else:
-    broken = set()
+    broken = []
 
 
 for i in range(1000001):
