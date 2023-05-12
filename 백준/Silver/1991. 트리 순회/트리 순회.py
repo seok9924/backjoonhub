@@ -1,34 +1,34 @@
 import sys
- 
-N = int(sys.stdin.readline().strip())
-tree = {}
- 
-for n in range(N):
-    root, left, right = sys.stdin.readline().strip().split()
-    tree[root] = [left, right]
- 
- 
-def preorder(root):
-    if root != '.':
-        print(root, end='')  # root
-        preorder(tree[root][0])  # left
-        preorder(tree[root][1])  # right
- 
- 
-def inorder(root):
-    if root != '.':
-        inorder(tree[root][0])  # left
-        print(root, end='')  # root
-        inorder(tree[root][1])  # right
- 
- 
-def postorder(root):
-    if root != '.':
-        postorder(tree[root][0])  # left
-        postorder(tree[root][1])  # right
-        print(root, end='')  # root
- 
- 
+n = int(sys.stdin.readline())
+tree={}
+
+for i in range(n):
+    root,left,right= map(str, sys.stdin.readline().split())
+    tree[root]=[left,right]
+
+# 전위 순회
+def preorder(v):
+    if v != ".": # 자식이 있다면
+        print(v, end="") # 루트 노드 출력
+        preorder(tree[v][0]) # 재귀적으로 왼쪽 노드 탐색
+        preorder(tree[v][1]) # 재귀적으로 오른쪽 노드 탐색
+
+
+# 중위 순회
+def inorder(v):
+    if v != ".": # 자식이 있다면
+        inorder(tree[v][0]) # 재귀적으로 왼쪽 노드 탐색
+        print(v, end="") # 루트 노드 출력
+        inorder(tree[v][1]) # 재귀적으로 오른쪽 노드 탐색
+
+
+# 후위 순회
+def postorder(v):
+    if v != ".": # 자식이 있다면
+        postorder(tree[v][0]) # 재귀적으로 왼쪽 노드 탐색
+        postorder(tree[v][1]) # 재귀적으로 오른쪽 노드 탐색
+        print(v, end="") # 루트 노드 출력
+
 preorder('A')
 print()
 inorder('A')
